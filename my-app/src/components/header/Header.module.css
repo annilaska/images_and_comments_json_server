@@ -1,0 +1,80 @@
+
+
+.header, .header_userInform, .userAvaAndName, .buttons {
+    display: flex;
+}
+
+
+.header, .header .header_userInform {
+    position: relative;
+}
+
+
+.header {
+    height: 256px;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.header_userInform {
+    z-index: 1;
+    margin-top: -70px;
+    width: 1024px;
+}
+
+.header .header_bunnerWrapper {
+    width: 100%
+}
+
+
+.header_userInform, .userAvaAndName, .buttons {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+
+.ava {
+    border-radius: 50%;
+}
+
+.userName {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: #111827
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+    .header .header_userInform {
+        width: 700px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 750px) {
+
+    .header .header_userInform {
+        width: 600px;
+   
+    }
+
+    .userAvaAndName {
+        transform: scale(0.8);
+    }
+}
+
+
+@media only screen and (max-width: 650px) {
+
+    .header .header_userInform {
+        width: 400px;
+   
+    }
+
+}
