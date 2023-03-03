@@ -1,0 +1,77 @@
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding-bottom: 10px;
+    box-sizing: border-box;
+
+    &_bunnerWrapper {
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    }
+    
+    &_userInfo {
+        z-index: 555;
+        padding: 0 3rem 0 3rem;
+        width: 100%;
+        height: 3rem;
+        box-sizing: border-box;
+
+        &, .userAvaAndName, .buttons {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+    }
+  
+    .ava {
+        border-radius: 50%;
+        width: 100px;
+        height: auto;
+        border: #FFFFFF solid 4px;
+    }
+    
+    .userName {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        color: #111827
+    }
+
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+
+    .header .header_userInfo {
+        width: 700px;
+    }
+
+
+
+}
+
+@media only screen and (max-width: 750px) {
+
+    .header .header_userInfo {
+        width: 600px;
+   
+    }
+
+    .userAvaAndName {
+        transform: scale(0.8);
+    }
+}
+
+
+@media only screen and (max-width: 650px) {
+
+    .header .header_userInfo {
+        width: 400px;
+   
+    }
+
+}

@@ -1,30 +1,32 @@
 import * as axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://boiling-refuge-66454.herokuapp.com/images'
+    baseURL: 'http://localhost:3001/'
 });
 
 export const elementsAPI = {
 
     getImagesList: () => {
-
-        return instance.get('')
+        return instance.get('photos/')
         .then(response => {
             return response.data;
         })
     },   
 
-    getLargeImagesAndComments: (imageId) => {
+    getCard: (imageId) => {
 
-        return instance.get(`/` + imageId)
+        return instance.get(`photos/` + imageId)
         .then(response => {
             return response.data;
         })
     },
     
-    addComments: (imageId, newComment) => {
+    addComments: (cardData) => {
+        const id = cardData.cardId
+        const imageUrl = cardData.cardImage
+        const comments = cardData.newComments
         
-        return instance.post(`/` + imageId + '/comments', {name: 'Ricardo', comment: newComment} )
+        return instance.put(`photos/` + id, {id: id, imageUrl: imageUrl, comments: comments} )
         .then(response => {
             return response.data;
         })

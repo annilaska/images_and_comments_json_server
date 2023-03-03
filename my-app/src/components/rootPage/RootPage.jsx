@@ -1,30 +1,44 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink} from "react-router-dom";
 import Header from "../header/Header";
-import s from "./RootPage.module.css";
+import "./RootPage.scss";
+import { fetchImagesThunk } from '../../store/slices/imagesSlice'
+import Preloader from "../preloader/Preloader";
+import { useDispatch, useSelector } from "react-redux";
 
 
-const RootPage = ({ imagesList }) => {
+const RootPage = () => {
 
-   
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchImagesThunk())
+    }, [dispatch])
+
+    const imagesCollection = useSelector(state => state.imagesListSection.imagesList)
+    const loader = useSelector(state => state.imagesListSection.isloading)
+
     return (
-       <div>
+       <>
             <Header />
-            <div className={s.images}>
+            {loader === true && <Preloader />}
+            <div className='images'>
             {
-                imagesList.map(image => <div className={s.images_card} key={image.id}>
+                imagesCollection.map(image => <div className='images_card' key={image.id}>
                     <NavLink to={'/' + image.id}>
-                        <div className={s.imageWrapper}>
-                            <img className={s.image}
-                            src={image.url != null ? image.url : '2'} alt=''>
+                        <div className='imageWrapper'>
+                            <img 
+                                className='image'
+                                src={image.imageUrl != null ? image.imageUrl : '2'} 
+                                alt=''
+                            >
                             </img>
                         </div>
                     </NavLink>
-                    <div className={s.images_id}>id: {image.id}</div>
+                    <div className='images_id'>id: {image.id}</div>
                 </div>)
             }
         </div>
-       </div>
+       </>
     )
 };
 

@@ -16,11 +16,13 @@
     margin-left: 10px;
     cursor: pointer;
     box-sizing: border-box;
+
+    &_icon {
+        margin-right: 10px;
+    }
 }
 
-.button, .button_icon {
-    margin-right: 10px;
-}
+
 
 @media only screen and (max-width: 750px) {
 
